@@ -1,7 +1,7 @@
 <h1>All Products</h1>
 
 	<% @products.each do |product| %>
-		<p><%= "#{product.id}, #{product.name}, #{product.description}, #{product.price_in_cents}" %>
+		<p><%= "#{product.id}, #{product.name}, #{product.description}, $#{product.cents_to_dollars}, #{product.price_in_cents}" %>
 		</p>
 	<% end %>
 
