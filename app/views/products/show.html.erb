@@ -1,0 +1,11 @@
+<h1>Product <%= @product.id %></h1>
+<div>
+	<p><%= @product.name %></p>
+	<p><%= @product.description %></p>
+	<p><%= @product.price_in_cents %></p>
+</div>
+<div>
+	<%= link_to "Back", products_path %>
+	<%= link_to "Edit Product", edit_product_path(@product) %>
+	<%= link_to "Delete Product", product_path(@product), method: :delete, data: {confirm: "You sure you wanna delete this product? It's going to be totally gone you know."} %>
+</div>
