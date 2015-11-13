@@ -1,0 +1,26 @@
+<% if current_user %>
+	<%= form_for([@product, @review]) do |f| %>
+	<% if @review.errors.any? %>
+		<div>
+			<p><%= pluralize(@review.errors.count, "error") %> made this break.</p>
+
+			<ul>
+			<% @review.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div>
+		<p><%= f.label :comment %></p>
+		<p><%= f.text_area :comment %></p>
+	</div>
+	<div>
+		<%= f.submit %>
+	</div>
+<% end %>
+
+<% else %>
+	<p>You have to log in to access creating or editing reviews. <%= link_to "Log In", new_session_path %></p>
+<% end %>

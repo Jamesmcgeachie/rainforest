@@ -1,10 +1,12 @@
 class ReviewsController < ApplicationController
 
-	before_filter :get_product, only: [:create]
-	before_filter :get_review, only: [:show, :destroy]
+  before_action :authenticate_user, only: [:edit]
+	before_filter :get_product, only: [:show, :create, :edit, :update]
+	before_filter :get_review, only: [:show, :edit, :destroy]
 
   def show
   end
+
 
   def create
   	@review = @product.reviews.build(sanitized_review_params)
@@ -15,6 +17,17 @@ class ReviewsController < ApplicationController
   	else
   		render 'products/show'
   	end
+  end
+
+  def edit
+  end
+
+  def update
+    if @review.update_attributes(sanitized_review_params)
+      redirect_to product_path(@product)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -31,7 +44,6 @@ class ReviewsController < ApplicationController
   end
 
   def get_review
-  	@review = Review.find(params[:id])
+  	@review = @product.reviews.find(params[:id])
   end
-
 end

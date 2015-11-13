@@ -10,4 +10,13 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  def authenticate_user
+  	unless current_user
+  		redirect_to '/login'
+  		flash[:alert] = "Gotta be logged in to do that."
+  	end
+  end
+
+  helper_method :authenticate_user
 end
