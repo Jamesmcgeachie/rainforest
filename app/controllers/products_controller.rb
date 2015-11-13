@@ -7,6 +7,9 @@ class ProductsController < ApplicationController
   end
 
   def show
+    if current_user
+      @review = @product.reviews.build
+    end
   end
 
   def new
