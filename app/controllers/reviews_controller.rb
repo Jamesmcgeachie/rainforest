@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
 
   before_action :authenticate_user, only: [:edit]
 	before_filter :get_product, only: [:show, :create, :edit, :update]
-	before_filter :get_review, only: [:show, :edit, :destroy]
+	before_filter :get_review, only: [:show, :edit, :update, :destroy]
 
   def show
   end

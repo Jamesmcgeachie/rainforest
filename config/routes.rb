@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  root 'products#index'
 
   resources :products do
     resources :reviews, only: [:show, :create, :edit, :update, :destroy]
   end
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   get '/signup' => 'user#new'
   get '/login' => 'sessions#new'
   resources :sessions, only: [:new, :create, :destroy]

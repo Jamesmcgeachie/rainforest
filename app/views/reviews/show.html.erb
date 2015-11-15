@@ -1,1 +1,5 @@
+<h1> Showing Review for <%= @product.name %></h1>
 
+<p><%= @review.comment %></p>
+<p>by: <%= @review.user.email %></p>
+<p>Left on: <%= @review.created_at %></p>
