@@ -1,0 +1,9 @@
+<h1>Product Categories</h1>
+
+<% @categories.each do |category| %>
+	<p>
+		<a href="/categories/<%= category.id %>">
+			<%= category.name %>
+		</a>
+	</p>
+<% end %>

@@ -19,4 +19,5 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :authenticate_user
+
 end

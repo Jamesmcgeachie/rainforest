@@ -1,0 +1,13 @@
+<h1>Add Categories to Product.</h1>
+
+<!-- Incomplete. -->
+
+<%= form_tag product_path do %>
+	<% @categories.each do |category| %>
+		<p>
+			<%= category.name %>
+			<input name="category[:name]" type="checkbox" value="<%= category.name %>" />
+		</p>
+	<% end %>
+	<%= submit_tag "Save tags" %>
+<% end %>

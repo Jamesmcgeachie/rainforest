@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   before_filter :get_product, only: [:show, :edit, :update, :destroy]
+  before_filter :get_categories, only: [:show, :edit]
   before_action :authenticate_user, only: [:new, :edit, :create, :destroy]
 
   def index
@@ -38,6 +39,10 @@ class ProductsController < ApplicationController
   	end
   end
 
+  def updatetags
+    puts params
+  end
+
   def destroy
   	@product.destroy
   	redirect_to products_path
@@ -51,5 +56,9 @@ class ProductsController < ApplicationController
 
   def sanitized_product_params
   	params.require(:product).permit(:price_in_cents, :description, :name)
+  end
+
+  def get_categories
+    @categories = Category.all
   end
 end

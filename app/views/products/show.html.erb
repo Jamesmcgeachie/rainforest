@@ -1,9 +1,16 @@
 <h1>Product <%= @product.id %></h1>
 <div>
+	<p> Categories:
+		<% @product.categories.each do |category| %>
+			<a href="/categories/<%= category.id %>">
+				<%= category.name %>
+			</a> |
+		<% end %>
+	</p>
 	<p><%= @product.name %></p>
 	<p><%= @product.description %></p>
 	<p>$<%= @product.cents_to_dollars %></p>
-	<p><%= @product.price_in_cents %></p>
+	<p><%= @product.price_in_cents %> cents</p>
 </div>
 
 <div>
