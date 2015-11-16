@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
 
   def new
   	@product = Product.new
+    2.times { @product.categories.build }
   end
 
   def edit
@@ -39,9 +40,8 @@ class ProductsController < ApplicationController
   	end
   end
 
-  def updatetags
-    puts params
-  end
+  # def updatetags
+  # end
 
   def destroy
   	@product.destroy
@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
   end
 
   def sanitized_product_params
-  	params.require(:product).permit(:price_in_cents, :description, :name)
+  	params.require(:product).permit(:price_in_cents, :description, :name, categories_attributes: [:id, :name])
   end
 
   def get_categories

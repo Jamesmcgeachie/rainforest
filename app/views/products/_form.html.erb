@@ -23,6 +23,16 @@
 		<%= f.text_field :price_in_cents %>
 	</div>
 	<div>
-		<%= f.submit %>
+		<ul>
+			<%= f.fields_for :categories do |categories_form| %>
+				<li>
+					<%= categories_form.label :name %>
+					<%= categories_form.text_field :name %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+	<div>
+		<%= f.submit class: 'submit' %>
 	</div>
 	<% end %>

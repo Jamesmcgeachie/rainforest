@@ -1,4 +1,4 @@
-<h1>Product <%= @product.id %></h1>
+<h1><%= "Product #{@product.id}" %></h1>
 <div>
 	<p> Categories:
 		<% @product.categories.each do |category| %>
@@ -25,16 +25,7 @@
 </div>
 
 <div>
-<p>Showing all reviews for  <%= @product.name %>. Newest First.</p>
-
-<% @product.reviews.order(created_at: :desc).each do |review| %>
-	<p>
-		<%= review.comment %>
-		<% if review.user != nil %>
-			<p>by <%= review.user.email %> </p>
-			<p>Added on: <%= review.created_at %></p>
-		<% end %>
-	</p>
-<% end %>
+	<p>Showing all reviews for  <%= @product.name %>. Newest First.</p>
+	<%= render partial: 'reviews/review', collection: @product.reviews.order(created_at: :desc) %>
 </div>
 

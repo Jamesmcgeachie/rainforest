@@ -5,23 +5,31 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<% if flash[:notice] %>
-		<p><%= flash[:notice] %></p>
-	<% end %>
-	<% if flash[:alert] %>
-		<p><%= flash[:alert] %></p>
-	<% end %>
-
-	<div>
-		<% if current_user %>
-			Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %> <%= link_to "Profile", user_path(session[:user_id]) %>
-		<% else %>
-			<%= link_to "Log in", new_session_path %> or <%= link_to "Join us!!", new_user_path %>
+		<div class="navbar">
+		<div class="container-fluid">
+			<div id="logo">
+				<p>RAINFOREST</p>
+			</div>
+			<% if current_user %>
+				Signed in as <%= current_user.email %>. <%= link_to "Log-out", session_path("current"), :method => :delete %> | <%= link_to "Profile", user_path(session[:user_id]) %> | <%= link_to "Home", root_path %>
+			<% else %>
+				<%= link_to "Log in", new_session_path %> or <%= link_to "Join us!!", new_user_path %>
+			<% end %>
+		</div>
+	</div>
+	<div class="flashes">
+		<% if flash[:notice] %>
+			<p><%= flash[:notice] %></p>
+		<% end %>
+		<% if flash[:alert] %>
+			<p><%= flash[:alert] %></p>
 		<% end %>
 	</div>
-<%= yield %>
-
+	<div class ="container-fluid">
+		<%= yield %>
+	</div>
 </body>
 </html>
