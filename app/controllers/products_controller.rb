@@ -40,8 +40,6 @@ class ProductsController < ApplicationController
   	end
   end
 
-  # def updatetags
-  # end
 
   def destroy
   	@product.destroy
