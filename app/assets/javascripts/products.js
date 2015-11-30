@@ -4,8 +4,8 @@ $(document).ready(function() {
 		var searchString = $('#search').val();
 
 		$.ajax({
-			url: '/products?search=' + searchString;
-			type: 'GET'
+			url: '/products?search=' + searchString,
+			type: 'GET',
 			dataType: 'html'
 		}).done(function(data){
 			$('#products').html(data);
