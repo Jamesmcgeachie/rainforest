@@ -5,7 +5,11 @@ class ProductsController < ApplicationController
   before_action :authenticate_user, only: [:new, :edit, :create, :destroy]
 
   def index
-  	@products = Product.all
+    if params[:search]
+      @products = Product.where('name ILIKE ?', "%#{params[:search]}%")
+    else
+      @products = Product.all
+    end
   end
 
   def show
