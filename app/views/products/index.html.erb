@@ -1,17 +1,35 @@
 <h1>All Products</h1>
 
-	<%= link_to 'Create a new Product', new_product_path %>
+<%= link_to 'Create a new Product', new_product_path %>
 
-	<%= form_tag products_path, method: 'get', authentication: false, id: 'search-form' do %>
-		<%= text_field_tag :search, params[:search] %>
-		<%= submit_tag "Search" %>
-	<% end %>
+<%= form_tag products_path, method: 'get', authentication: false, id: 'search-form' do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search" %>
+<% end %>
 
-	<% @products.each do |product| %>
-		<p>
-			<a href="/products/<%= product.id %>">
-				<%= "#{product.id}, #{product.name}, #{product.description}, $#{product.cents_to_dollars}, #{product.price_in_cents}" %>
-			</a>
-		</p>
-	<% end %>
+<div id="products">
+	<%= render @products %>
+</div>
+
+<script type="text/javascript">
+	function search_results() {
+		if (this.readyState === 4) {
+			console.log(this);
+			document.getElementById('products').innerHTML = this.responseText;
+		};
+	};
+
+	var form = document.getElementById('search-form');
+	form.addEventListener('submit', function(e) {
+		e.preventDefault();
+		var searchString = document.getElementById('search').value;
+
+		var xhr = new XMLHttpRequest();
+		xhr.onload = search_results;
+		xhr.open('GET', '/products?search=' + searchString, true);
+		xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+		xhr.send();
+	});
+</script>
+
 
