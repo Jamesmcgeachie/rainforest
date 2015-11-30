@@ -3,11 +3,9 @@ $(document).ready(function() {
 		event.preventDefault();
 		var searchString = $('#search').val();
 
-		$.ajax({
-			url: '/products?search=' + searchString,
-			type: 'GET',
-			dataType: 'html'
-		}).done(function(data){
+		$.get('/products?search=' + searchString)
+		.done(function(data){
+			console.log(data);
 			$('#products').html(data);
 		})
 	})
