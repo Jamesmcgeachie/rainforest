@@ -24,8 +24,8 @@
 	<%= render 'reviews/review_form' %>
 </div>
 
-<div>
-	<p>Showing all reviews for  <%= @product.name %>. Newest First.</p>
+<p>Showing all reviews for  <%= @product.name %>. Newest First.</p>
+<div id="review-list">
 	<%= render partial: 'reviews/review', collection: @product.reviews.order(created_at: :desc) %>
 </div>
 

@@ -12,11 +12,15 @@ class ReviewsController < ApplicationController
   	@review = @product.reviews.build(sanitized_review_params)
   	@review.user = current_user
 
-  	if @review.save
-  		redirect_to product_path(@product), notice: "Your review was successfully created! Yay!"
-  	else
-  		render 'products/show'
-  	end
+    respond_to do |format|
+    	if @review.save
+    		format.html { redirect_to product_path(@product), notice: "Your review was successfully created! Yay!" }
+        format.js {}
+    	else
+    		format.html { render 'products/show', alert: 'That did not work.' }
+        format.js {}
+    	end
+    end
   end
 
   def edit
