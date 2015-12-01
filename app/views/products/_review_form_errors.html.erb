@@ -1,0 +1,8 @@
+<% if @review.errors.any? %>
+	<p><%= pluralize(@review.errors.count, "error") %> made this break.</p>
+	<ul>
+		<% @review.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+	</ul>
+<% end %>

@@ -29,3 +29,14 @@
 	<%= render partial: 'reviews/review', collection: @product.reviews.order(created_at: :desc) %>
 </div>
 
+<script type="text/javascript">
+
+  $(document).ready(function() {
+     $("#new_review")
+        .on('ajax:beforeSend', function() {alert("loading!");})
+        .on('ajax:success', function(data, status, xhr) {alert("success!");})
+        .on('ajax:error', function(xhr, status, error) {alert("error!");})
+        .on('ajax:complete', function() {alert("complete!");});
+  });
+
+</script>
