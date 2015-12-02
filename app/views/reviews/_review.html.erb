@@ -1,4 +1,4 @@
-<p>
+<ul>
 	<%= review.comment %>
 	<% if review.user != nil %>
 		<p>by <%= review.user.email %> </p>
@@ -6,4 +6,4 @@
 			<time><%= review.created_at %></time>
 		</p>
 	<% end %>
-</p>
+</ul>

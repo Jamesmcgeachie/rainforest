@@ -25,9 +25,9 @@
 </div>
 
 <p>Showing all reviews for  <%= @product.name %>. Newest First.</p>
-<div id="review-list">
+<ul id="review-list">
 	<%= render partial: 'reviews/review', collection: @product.reviews.order(created_at: :desc) %>
-</div>
+</ul>
 
 <script type="text/javascript">
 
