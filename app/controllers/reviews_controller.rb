@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
   before_action :authenticate_user, only: [:edit]
-	before_filter :get_product, only: [:show, :create, :edit, :update]
+	before_filter :get_product, only: [:show, :create, :edit, :update, :destroy]
 	before_filter :get_review, only: [:show, :edit, :update, :destroy]
 
   def show
@@ -36,6 +36,10 @@ class ReviewsController < ApplicationController
 
   def destroy
   	@review.destroy
+    respond_to do |format|
+      format.html { redirect_to product_path(@product), notice: "Deleted Review."}
+      format.js {}
+    end
   end
 
   private

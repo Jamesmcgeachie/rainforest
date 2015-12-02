@@ -1,4 +1,4 @@
-<% if@review.errors.present? %>
+<% if @review.errors.present? %>
 	$('#review-errors').html("<%=j (render(:partial => '/products/review_form_errors')) %>");
 <% else %>
 	$('#review-errors').html("");

@@ -51,7 +51,6 @@ class ProductsController < ApplicationController
   	end
   end
 
-
   def destroy
   	@product.destroy
   	redirect_to products_path

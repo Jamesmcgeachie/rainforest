@@ -5,5 +5,8 @@
 		<p>Added on:
 			<time><%= review.created_at %></time>
 		</p>
+		<% if review.user == current_user %>
+			<%= link_to 'Delete Review', product_review_path(@product, review), method: 'delete', remote: true %>
+		<% end %>
 	<% end %>
 </ul>
